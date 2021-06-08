@@ -10,4 +10,4 @@ activate virtual environment
 
 run command " pip install requirements.txt "
 
-run command " python manage.py runseerver "
+run command " python manage.py runserver "
