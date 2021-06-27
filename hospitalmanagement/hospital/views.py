@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import Register
+from .models import*
 from django.contrib.auth import authenticate,login,logout
 def home(request):
      return render(request, 'hospital/home.html', {})
@@ -41,3 +42,32 @@ def Login(request):
 			error = "no"
 	d = {'error':error}
 	return render(request,'hospital/login.html',d)
+
+
+def Add_Doctor(request):
+    error=""
+    if not request.user.is_staff:
+        return redirect('login')
+
+    if request.method=="POST":
+        n = request.POST['name']
+        c = request.POST['contact']
+        s = request.POST['specialization']
+        
+        try:
+            Doctor.objects.create(name=n,contact=c,specialization=s)
+            error="no"
+        except:
+            error="yes"
+    d = {'error':error}
+    return render(request,'hospital/add_doctor.html',d)
+
+
+
+def View_Doctor(request):
+    if not request.user.is_staff:
+        return redirect('login')
+        
+    doc = Doctor.objects.all()
+    d = {'doc':doc}
+    return render(request,'view_doctor.html',d)

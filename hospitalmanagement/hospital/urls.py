@@ -7,8 +7,12 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     path('register/', views.register, name='register'),
+    path('add_doctor/',views.Add_Doctor, name='add_doctor' ),
     path('login/', auth_views.LoginView.as_view(template_name='hospital/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='hospital/logout.html'), name='logout'),
+
+
+    
     
 ]
 
