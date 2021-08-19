@@ -1,0 +1,16 @@
+.nav-link{
+	color: black !important;
+
+}
+
+.nav-link:hover{
+	background-color: lightblue !important;
+	border-radius: 10px;
+	
+}
+
+.topnav-right {
+  float: right;
+}
+
+{%load static %}

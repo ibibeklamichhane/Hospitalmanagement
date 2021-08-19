@@ -70,4 +70,13 @@ def View_Doctor(request):
         
     doc = Doctor.objects.all()
     d = {'doc':doc}
-    return render(request,'view_doctor.html',d)
+    return render(request,'hospital/view_doctor.html',d)
+
+
+def Delete_Doctor(request,pid):
+    if not request.user.is_staff:
+        return redirect('login')
+        
+    doctor = Doctor.objects.get(id=pid)
+    doctor.delete()
+    return redirect('view_doctor')
