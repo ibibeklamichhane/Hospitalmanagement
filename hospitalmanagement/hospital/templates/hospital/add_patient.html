@@ -1,0 +1,56 @@
+{% extends 'hospital/base.html' %}
+{% load static %}
+
+{% block content %}
+
+ 
+
+
+<div class="container" style="margin-top: 60px;">
+<h2 class="text-center text-success font-weight-bold">Add Patient</h2>
+<form method="POST">
+	{% csrf_token %}
+	<label><b>Name</b></label>
+	<input type = text name="name" class="form-control" required>
+	<label><b>Contact</b></label>
+	<input type="text" name="contact" class="form-control" required>
+	<label><b>Age</b></label>
+	<input type="text" name="age" class="form-control" required>
+	<br>
+    <label><b>Gender</b></label>
+	
+
+	
+	<input type="radio" id="male" name="gender" value="male">
+  	<label for="male">male</label><br>
+	<input type="radio" id="female" name="gender" value="female">
+  	<label for="female">female</label><br>
+	<input type="radio" id="others" name="gender" value="others">
+  	<label for="others">others</label><br>
+	
+    <label><b>Address</b></label>
+
+	<br>
+
+	<input type="text" name="address" class="form-control" required>
+	<br>
+	<input type= submit value="Submit" class="form-control btn btn-danger">
+</form>
+</div>
+{% ifequal error "no" %}
+<script>
+	alert('Record Saved Successfully');
+	window.location=('(%url 'view_patient' %)');
+</script>   
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+	alert('Something went wrong , Try Again');
+
+</script>
+{%  endifequal %}
+
+
+
+{% endblock%}

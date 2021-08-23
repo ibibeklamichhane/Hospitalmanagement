@@ -16,6 +16,7 @@ def contact(request):
 def register(request):
 	if request.method=="POST":
 		form = Register(request.POST)
+
 		if form.is_valid():
 			print("HELLO")
 			print(form)
@@ -80,3 +81,40 @@ def Delete_Doctor(request,pid):
     doctor = Doctor.objects.get(id=pid)
     doctor.delete()
     return redirect('view_doctor')
+
+def Add_Patient(request):
+    error=""
+    if not request.user.is_staff:
+        return redirect('login')
+
+    if request.method=="POST":
+        n = request.POST['name']
+        c = request.POST['contact']
+        a = request.POST['age']
+        g = request.POST['gender']
+        ad = request.POST['address']
+        
+        try:
+            Patient.objects.create(name=n,contact=c,age=a,gender=g,address=ad)
+            error="no"
+        except:
+            error="yes"
+    d = {'error':error}
+    return render(request,'hospital/add_patient.html',d)
+
+    
+def View_Patient(request):
+    if not request.user.is_staff:
+        return redirect('login')
+        
+    pat = Patient.objects.all()
+    d = {'pat':pat}
+    return render(request,'hospital/view_patient.html',d)
+
+def Delete_Patient(request,pid):
+    if not request.user.is_staff:
+        return redirect('login')
+        
+    patient = Patient.objects.get(id=pid)
+    patient.delete()
+    return redirect('view_patient')
