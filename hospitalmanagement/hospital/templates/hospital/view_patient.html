@@ -1,0 +1,47 @@
+
+{% extends 'hospital/base.html' %}
+
+{% block content %}
+
+ 
+
+
+<div class="container" style="margin-top: 60px;">
+<h2 class="text-center text-success font-weight-bold">View Patient</h2>
+<br>
+</div>
+<table id="example" class="table table-hover display" style="width:100%">
+	<thead>
+		<tr>
+			
+			<th>Patient Name</th>
+			<th>Contact</th>
+			<th>Age</th>
+            <th>Gender</th>
+            <th>Address</th>
+
+			<th>Remove</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for i in pat %}
+		<tr>
+			<td>{{i.id}}</td>
+			<td>{{i.name}}</td>
+			<td>{{i.contact}}</td>
+			<td>{{i.age}}</td>
+			<td>{{i.gender}}</td>
+			<td>{{i.address}}</td>
+
+        
+			<td>{{i.remove}}</td>
+			
+			
+
+			<td><a class ="btn btn-danger" href="{%url 'delete_patient' i.id%}" onclick="return confirm(Are you sure?)">Delete</a></td>
+		
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{%endblock %}
