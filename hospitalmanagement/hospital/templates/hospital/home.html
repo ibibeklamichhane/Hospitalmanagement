@@ -126,6 +126,75 @@
         </div>
       </div>
       
+
+
+      <style>
+        .form-container
+        {
+            background-color: #fff;
+            box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 20px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
+            border-radius: 8px; 
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+        
+        }
+        
+        
+        </style>
+        
+        <div  class="w3-content w3-container w3-padding-64">
+                  <div class="row " style="margin-top: 50px">
+                        <div class="col-md-offset-3  form-container">
+                            <h2>Feedback</h2> 
+                            <p> Please provide your feedback below: </p>
+                            <form role="form" method="POST" id="reused_form">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-sm-12 form-group">
+                                        <label>How do you rate your overall experience?</label>
+                                        <p>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="experience" id="radio_experience" value="bad" >
+                                                Bad 
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="experience" id="radio_experience" value="average" >
+                                                Average 
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="experience" id="radio_experience" value="Very good" >
+                                                Good 
+                                            </label>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 form-group">
+                                        <label for="comments"> Comments:</label>
+                                        <textarea class="form-control" type="textarea" name="comments" id="comments" placeholder="Your Comments" maxlength="6000" rows="7"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        <label for="name"> Your Name:</label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label for="email"> Email:</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 form-group">
+                                        <button type="submit" class="btn btn-lg btn-warning btn-block" >Post </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="success_message" style="width:100%; height:100%; display:none; "> <h3>Posted your feedback successfully!</h3> </div>
+                            <div id="error_message" style="width:100%; height:100%; display:none; "> <h3>Error</h3> Sorry there was an error sending your form. </div>
+                        </div>
+                    </div>
+                </div>
+        
       <!-- Modal for full size images on click-->
       <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
         <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
@@ -170,7 +239,8 @@
           
         </div>
     </div>
-      
+   
+    
       <footer class="w3-center w3-black w3-padding-64 ">
         <a href="{%url "home"%}" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
         <div class="w3-xlarge w3-section">
