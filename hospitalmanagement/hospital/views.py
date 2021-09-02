@@ -118,3 +118,9 @@ def Delete_Patient(request,pid):
     patient = Patient.objects.get(id=pid)
     patient.delete()
     return redirect('view_patient')
+
+def Feedback(request):
+    return render(request,'hospital/feedback.html',{})
+
+def contact(request):
+     return render(request, 'hospital/contact.html', {})
