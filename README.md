@@ -1,6 +1,16 @@
 # Hospitalmanagement
 Hospital management system in django
 
+Features:
+1)Login and Signuo Authentication
+2)Add patients Details
+3)Add Doctor Details
+4)View all Doctors and Patients list
+5)Make Doctors Appointment by patient with their doctors
+
+
+
+
 //steps involve in using this project//
 
 clone the repository 
